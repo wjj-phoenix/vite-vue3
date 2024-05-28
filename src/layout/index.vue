@@ -7,7 +7,7 @@
             头部栏
         </div>
         <div class="main">
-            <RouterView />
+            <RouterView ></RouterView>
         </div>
         <div class="footer">
             底部栏

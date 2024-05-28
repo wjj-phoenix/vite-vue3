@@ -31,7 +31,7 @@ export const constantRoutes = [
     },
     children:[
       {
-        path:'dashborad',
+        path:'/dashborad',
         name: 'home',
         component: () => import('@/views/Dashboard.vue'),
         meta: {
@@ -83,8 +83,18 @@ export const constantRoutes = [
           hidden: false
         },
         children: [
+          /* {
+            path: '/sys/log/login-log',
+            name: 'login-log',
+            component: () => import('@/views/sys/log/login-log/index.vue'),
+            meta: {
+              title: '登录日志',
+              icon: 'DArrowRight',
+              hidden: false
+            }
+          }, */
           {
-            path: '/sys/login-log',
+            path: '/sys/log/login-log',
             name: 'login-log',
             component: () => import('@/views/sys/log/login-log/index.vue'),
             meta: {
@@ -94,8 +104,8 @@ export const constantRoutes = [
             }
           },
           {
-            path: '/sys/operation-log',
-            name: 'login-log',
+            path: '/sys/log/operation-log',
+            name: 'operation-log',
             component: () => import('@/views/sys/log/operation-log/index.vue'),
             meta: {
               title: '操作日志',
