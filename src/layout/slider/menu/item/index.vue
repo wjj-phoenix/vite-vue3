@@ -2,18 +2,18 @@
   <!-- <p>{{ menu }}</p> -->
   <template v-for="menu in menus" :key="menu.path">
     <el-menu-item v-if="!menu.children && !menu.meta.hidden" @click="toMenu" :index="menu.path">
-      <template #title>
-        <el-icon>
+      <el-icon>
           <component :is="menu.meta.icon" />
         </el-icon>
+      <template #title>
         <span>{{ menu.meta.title }}</span>
       </template>
     </el-menu-item>
     <el-menu-item v-if="menu.children && menu.children.length == 1 && !menu.meta.hidden" @click="toMenu" :index="menu.children[0].path">
+      <el-icon>
+        <component :is="menu.children[0].meta.icon" />
+      </el-icon>
       <template #title>
-        <el-icon>
-          <component :is="menu.children[0].meta.icon" />
-        </el-icon>
         <span>{{ menu.children[0].meta.title }}</span>
       </template>
     </el-menu-item>

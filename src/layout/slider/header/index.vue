@@ -1,11 +1,19 @@
 <template>
     <div class="slider-header">
         <img src="@/assets/logo.svg" alt="logo">
-        <p>phoenix ops</p>
+        <p v-show="!isCollapse">phoenix ops</p>
     </div>
 </template>
 
 <script lang="ts" setup>
+import emitter from '@/utils/emitter';
+import { ref } from 'vue';
+
+let isCollapse = ref(false)
+// 绑定事件
+emitter.on('is-collapse', (collapse: any) => {
+  isCollapse.value = collapse
+})
 </script>
 
 <style scoped lang="scss">

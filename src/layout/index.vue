@@ -1,22 +1,31 @@
 <template>
     <div class="container">
-        <div class="slider">
+        <div class="slider" :class="{ 'fold': isCollapse }">
             <Slider />
         </div>
-        <div class="tabbar">
-            头部栏
+        <div class="tabbar" :class="{ 'fold': isCollapse }">
+            <Tabbar />
         </div>
-        <div class="main">
-            <RouterView ></RouterView>
+        <div class="main" :class="{ 'fold': isCollapse }">
+            <Main />
         </div>
-        <div class="footer">
+        <div class="footer" :class="{ 'fold': isCollapse }">
             底部栏
         </div>
     </div>
 </template>
 <script setup lang="ts">
-import { RouterView } from 'vue-router';
 import Slider from './slider/index.vue';
+import Main from './main/index.vue';
+import Tabbar from './tabbar/index.vue';
+import emitter from '@/utils/emitter';
+import { ref } from 'vue';
+
+let isCollapse = ref(false)
+// 绑定事件
+emitter.on('is-collapse', (collapse: any) => {
+    isCollapse.value = collapse
+})
 </script>
 
 <style scoped lang="scss">
@@ -24,11 +33,17 @@ import Slider from './slider/index.vue';
     width: 100%;
     height: 100vh;
     background-color: red;
+
     .slider {
         color: white;
         width: 200px;
         height: 100vh;
         background: blue;
+        transition: all 0.3s;
+
+        &.fold {
+            width: 50px;
+        }
     }
 
     .tabbar {
@@ -38,6 +53,15 @@ import Slider from './slider/index.vue';
         top: 0px;
         left: 200px;
         background-color: aqua;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: all 0.3s;
+
+        &.fold {
+            width: calc(100% - 50px);
+            left: 50px;
+        }
     }
 
     .main {
@@ -50,8 +74,15 @@ import Slider from './slider/index.vue';
         box-sizing: border-box;
         background-color: rgb(4, 195, 8);
         overflow: auto;
+        transition: all 0.3s;
+
+        &.fold {
+            width: calc(100% - 50px);
+            left: 50px;
+        }
     }
-    .footer{
+
+    .footer {
         position: absolute;
         width: calc(100% - 200px);
         height: 25px;
@@ -59,6 +90,12 @@ import Slider from './slider/index.vue';
         left: 200px;
         background-color: yellow;
         text-align: center;
+        transition: all 0.3s;
+
+        &.fold {
+            width: calc(100% - 50px);
+            left: 50px;
+        }
     }
 }
 </style>

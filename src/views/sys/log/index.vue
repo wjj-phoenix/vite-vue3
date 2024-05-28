@@ -1,8 +1,9 @@
 <template>
-    日志
-  </template>
-  
-  <style>
-  
-  </style>
-  
+  <router-view></router-view>
+</template>
+
+<script setup lang="ts">
+import { RouterView } from 'vue-router';
+</script>
+
+<style></style>

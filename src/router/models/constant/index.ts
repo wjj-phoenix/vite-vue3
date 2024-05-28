@@ -25,9 +25,8 @@ export const constantRoutes = [
     name: 'layout',
     redirect:'/dashborad',
     meta: {
-      title: '布局',
-      icon: 'HomeFilled',
-      hidden: false
+      title: '',
+      icon: '',
     },
     children:[
       {
@@ -51,6 +50,7 @@ export const constantRoutes = [
       icon: 'Setting',
       hidden: false
     },
+    redirect: '/sys/user',
     children: [
       {
         path: '/sys/user',
@@ -82,17 +82,8 @@ export const constantRoutes = [
           icon: 'Files',
           hidden: false
         },
+        redirect: '/sys/log/login-log',
         children: [
-          /* {
-            path: '/sys/log/login-log',
-            name: 'login-log',
-            component: () => import('@/views/sys/log/login-log/index.vue'),
-            meta: {
-              title: '登录日志',
-              icon: 'DArrowRight',
-              hidden: false
-            }
-          }, */
           {
             path: '/sys/log/login-log',
             name: 'login-log',
@@ -100,7 +91,6 @@ export const constantRoutes = [
             meta: {
               title: '登录日志',
               icon: 'DArrowRight',
-              hidden: false
             }
           },
           {
@@ -109,8 +99,7 @@ export const constantRoutes = [
             component: () => import('@/views/sys/log/operation-log/index.vue'),
             meta: {
               title: '操作日志',
-              icon: 'operation',
-              hidden: false
+              icon: 'operation'
             }
           }
         ]
